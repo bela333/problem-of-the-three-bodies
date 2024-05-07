@@ -79,9 +79,9 @@ fn main() -> errors::Result<()> {
     
     let radius = 0.05;
     
-    let red_orb = glowing_orb::new(vector![0.0, 0.0], radius, RED);
-    let blue_orb = glowing_orb::new(vector![0.5, 0.5], radius, BLUE);
-    let green_orb = glowing_orb::new(vector![-0.5, 0.5], radius, GREEN);
+    let red_orb = glowing_orb::new(vector![0.0, 0.0], radius, (RED*10.0).set_alpha(1.0));
+    let blue_orb = glowing_orb::new(vector![0.5, 0.5], radius, (BLUE*10.0).set_alpha(1.0));
+    let green_orb = glowing_orb::new(vector![-0.5, 0.5], radius, (GREEN*10.0).set_alpha(1.0));
     
     let layers = bg.over(red_orb).over(blue_orb).over(green_orb);
     
