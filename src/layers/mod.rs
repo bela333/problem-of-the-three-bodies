@@ -1,6 +1,11 @@
 use nalgebra::Vector4;
 
+use crate::colors::VectorExtensions;
+
 pub mod circle;
+pub mod glow;
+pub mod solid;
+pub mod glowing_orb;
 pub trait Layer: Sized {
     fn render(&self, pos: nalgebra::Vector2<f32>, frame: u32) -> nalgebra::Vector4<f32>;
     fn over<L: Layer + Sized>(self, top: L) -> (Self, L) {
@@ -30,6 +35,7 @@ where
         if alpha <= 0.0 {
             return l1color;
         }
-        return l1color.lerp(&l2color, alpha);
+        let alpha = l2color.w + l1color.w * (1.0 - l2color.w);
+        return ((l2color*l2color.w + l1color*l1color.w*(1.0-l2color.w))/alpha).set_alpha(alpha);
     }
 }

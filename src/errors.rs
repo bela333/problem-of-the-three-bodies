@@ -8,6 +8,10 @@ pub enum ThreeBodyError {
         #[from]
         source: image::ImageError,
     },
+    EXRError{
+        #[from]
+        source: exr::error::Error
+    }
 }
 
 impl Display for ThreeBodyError {

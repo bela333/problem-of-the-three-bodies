@@ -714,6 +714,7 @@ name = "problem-of-the-three-bodies"
 version = "0.1.0"
 dependencies = [
  "clap",
+ "exr",
  "image",
  "nalgebra",
  "thiserror",
